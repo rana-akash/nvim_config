@@ -6,10 +6,13 @@ vim.cmd.packadd('packer.nvim')
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
-	  requires = { {'nvim-lua/plenary.nvim'} , {'BurntSushi/ripgrep'}}
-  }
+    use {
+           'nvim-telescope/telescope.nvim', tag = '0.1.5',
+           requires = { {'nvim-lua/plenary.nvim'} , {'BurntSushi/ripgrep'}, { "nvim-telescope/telescope-live-grep-args.nvim" }},
+           config = function()
+                   require("telescope").load_extension("live_grep_args")
+               end
+       }
 use({
 	  'rose-pine/neovim',
 	  as = 'rose-pine',
